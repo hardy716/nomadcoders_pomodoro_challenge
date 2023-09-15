@@ -1,7 +1,7 @@
-|0. nomadcoder_pomodoro_challenge [🔻]()|
+|0. nomadcoder_pomodoro_challenge [🔻](https://github.com/hardy716/nomadcoders_pomodoro_challenge#-nomadcoder_pomodoro_challenge)|
 |---|
 
-|1. 코드 챌린지 [🔻]()|
+|1. 코드 챌린지 [🔻](https://github.com/hardy716/nomadcoders_pomodoro_challenge#-코드-챌린지)|
 |---|
 
 <br></br>
