@@ -10,7 +10,11 @@
 
 using POMO | UIKIT by Omar Sherif
 
+<br>
+
 Flutter로 웹툰 앱 만들기 - #5 POMODORO APP 강의를 기반으로 진행했습니다.
+
+(POMODORO 앱은 25분의 집중 작업 시간과 5분의 휴식 시간을 반복하여 효율적인 작업을 도와주는 타이머입니다.)
 
 노마드 코더와 함께 플러터 2주 챌린지에 도전하고 있습니다.
 
@@ -106,10 +110,11 @@ class IconTextButton extends StatelessWidget {
 
 코드 챌린지 이외에도 자유롭게 UI 변경 및 기능 추가를 해보았습니다.
 
-<br>
+(원래 타이머 앱은 25분 동안 작동합니다. 그러나, 관련 기능을 더 빠르게 보여드리기 위해 아래 시연 영상에서는 5초 동안 작동하도록 설정하였습니다.)
 
 |  |  |  |  |
 |:---:|:---:|:---:|:---:|
 | 1. pomodoro 타이머 시작 | 2. pomodoro 타이머 일시정지 | 3. pomodoro 타이머 재시작(리셋) | 4. pomodoro 카운트 초기화(삭제) |
 | ![image1](https://github.com/hardy716/nomadcoders_pomodoro_challenge/assets/101140679/33d4d3a8-5636-4e52-ade9-c37c51033ede) | ![image2](https://github.com/hardy716/nomadcoders_pomodoro_challenge/assets/101140679/3db321b5-32c3-451f-a117-626f47a1c028) | ![image3](https://github.com/hardy716/nomadcoders_pomodoro_challenge/assets/101140679/fe56d446-9b34-4adf-83cd-4e7f8c1d63ae) | ![image4](https://github.com/hardy716/nomadcoders_pomodoro_challenge/assets/101140679/033c3820-bf89-4565-b59c-7bfc5f0e539f) |
 
+<br></br>
