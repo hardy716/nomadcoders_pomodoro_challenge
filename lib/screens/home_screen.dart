@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:nomadcoder_pomodoro_challenge/widgets/icon_text_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const twentyFiveMinutes = 1500;
+  static const twentyFiveMinutes = 1500; // 1500
   int totalPomodoros = 0;
   int totalSeconds = twentyFiveMinutes;
   bool isRunning = false;
@@ -19,8 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void onTick(Timer timer) {
     if (totalSeconds == 0) {
       setState(() {
-        totalPomodoros = totalPomodoros + 1;
         isRunning = false;
+        totalPomodoros = totalPomodoros + 1;
         totalSeconds = twentyFiveMinutes;
       });
       timer.cancel();
@@ -39,10 +39,27 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void onPausePressed() {
-    timer.cancel();
     setState(() {
       isRunning = false;
     });
+    timer.cancel();
+  }
+
+  void onResetPressed() {
+    setState(() {
+      isRunning = false;
+      totalSeconds = twentyFiveMinutes;
+    });
+    timer.cancel();
+  }
+
+  void onDeletePressed() {
+    setState(() {
+      isRunning = false;
+      totalPomodoros = 0;
+      totalSeconds = twentyFiveMinutes;
+    });
+    timer.cancel();
   }
 
   String format(int seconds) {
@@ -57,13 +74,13 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           Flexible(
-            flex: 1,
+            flex: 3,
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
                 format(totalSeconds),
                 style: TextStyle(
-                  fontSize: 89.0,
+                  fontSize: 90.0,
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).cardColor,
                 ),
@@ -71,24 +88,42 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Flexible(
-            flex: 3,
-            child: Container(
-              child: Center(
-                child: IconButton(
-                  icon: Icon(
-                    isRunning
-                        ? Icons.pause_circle_outline
-                        : Icons.play_circle_outline,
+            flex: 5,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconTextButton(
+                        buttonIcon: isRunning
+                            ? Icons.pause_circle_outline
+                            : Icons.play_circle_outline,
+                        buttonIconSize: 90.0,
+                        buttonText: isRunning ? 'pause' : 'start',
+                        buttonColor: Theme.of(context).cardColor,
+                        onButtonPressed:
+                            isRunning ? onPausePressed : onStartPressed,
+                      ),
+                      const SizedBox(
+                        width: 30.0,
+                      ),
+                      IconTextButton(
+                        buttonIcon: Icons.timer_off_outlined,
+                        buttonIconSize: 90.0,
+                        buttonText: 'reset',
+                        buttonColor: Theme.of(context).cardColor,
+                        onButtonPressed: onResetPressed,
+                      )
+                    ],
                   ),
-                  iconSize: 120.0,
-                  color: Theme.of(context).cardColor,
-                  onPressed: isRunning ? onPausePressed : onStartPressed,
                 ),
-              ),
+              ],
             ),
           ),
           Flexible(
-            flex: 1,
+            flex: 4,
             child: Row(
               children: [
                 Expanded(
@@ -96,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
                       borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(45),
+                        top: Radius.circular(45.0),
                       ),
                     ),
                     child: Column(
@@ -118,6 +153,23 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontWeight: FontWeight.w600,
                             color:
                                 Theme.of(context).textTheme.displayLarge!.color,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        TextButton(
+                          onPressed: onDeletePressed,
+                          child: Text(
+                            'Delete all',
+                            style: TextStyle(
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .displayLarge!
+                                  .color!
+                                  .withOpacity(0.8),
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ),
                       ],
